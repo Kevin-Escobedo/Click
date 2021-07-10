@@ -1,5 +1,4 @@
 #include "Window.hpp"
-#include <iostream>
 
 Window::Window(const unsigned int x, const unsigned int y)
 :screen(), screenDimensions(), objects()
