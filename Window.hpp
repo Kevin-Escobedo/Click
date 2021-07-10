@@ -5,8 +5,8 @@
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Event.hpp>
 #include <SFML/Window/Mouse.hpp>
-#include <SFML/Graphics/CircleShape.hpp>
 #include <vector>
+#include "Ball.hpp"
 
 class Window
 {
@@ -15,14 +15,15 @@ public:
 
 private:
     sf::Vector2f screenDimensions;
-    std::vector<sf::CircleShape> objects;
+    std::vector<Ball> objects;
+    const int FRAMERATE = 60;
 
 public:
     Window(const unsigned int x, const unsigned int y);
     Window(const Window& w);
     Window& operator =(const Window& w);
     ~Window();
-    void addCircle(sf::CircleShape circle);
+    void addCircle(Ball circle);
     void run();
 
 private:
