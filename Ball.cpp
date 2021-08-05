@@ -3,7 +3,7 @@
 Ball::Ball(const unsigned int x, const unsigned int y)
 :circle(), circlePosition(), radius(), down(), right()
 {
-    srand(time(nullptr));
+    srand((unsigned int)time(nullptr));
     radius = (rand() % 10) + 10;
     circle.setRadius(radius);
 
@@ -11,7 +11,26 @@ Ball::Ball(const unsigned int x, const unsigned int y)
     circlePosition.y = y - radius;
 
     circle.setPosition(circlePosition);
-    circle.setFillColor(sf::Color::Black);
+
+    time_t now = time(nullptr);
+    struct tm* time = localtime(&now);
+
+    const int month = time->tm_mon;
+
+    if(month == 5) //Check if June
+    {
+        const unsigned int red = rand() % 256;
+        const unsigned int green = rand() % 256;
+        const unsigned int blue = rand() % 256;
+
+        const sf::Color color = sf::Color(red, green, blue);
+        circle.setFillColor(color);
+    }
+    
+    else
+    {
+        circle.setFillColor(sf::Color::Black);
+    }
 
     int direction = rand() % 4;
 
@@ -51,7 +70,26 @@ Ball::Ball(const Ball& b)
 
     circle.setRadius(radius);
     circle.setPosition(circlePosition);
-    circle.setFillColor(sf::Color::Black);
+    
+    time_t now = time(nullptr);
+    struct tm* time = localtime(&now);
+
+    const int month = time->tm_mon;
+
+    if(month == 5) //Check if June
+    {
+        const unsigned int red = rand() % 256;
+        const unsigned int green = rand() % 256;
+        const unsigned int blue = rand() % 256;
+
+        const sf::Color color = sf::Color(red, green, blue);
+        circle.setFillColor(color);
+    }
+    
+    else
+    {
+        circle.setFillColor(sf::Color::Black);
+    }
 
     down = b.down;
     right = b.right;
@@ -62,7 +100,26 @@ Ball& Ball::operator =(const Ball& b)
     circlePosition.x = b.circlePosition.x;
     circlePosition.y = b.circlePosition.y;
     radius = b.radius;
-    circle.setFillColor(sf::Color::Black);
+
+    time_t now = time(nullptr);
+    struct tm* time = localtime(&now);
+
+    const int month = time->tm_mon;
+
+    if(month == 5) //Check if June
+    {
+        const unsigned int red = rand() % 256;
+        const unsigned int green = rand() % 256;
+        const unsigned int blue = rand() % 256;
+
+        const sf::Color color = sf::Color(red, green, blue);
+        circle.setFillColor(color);
+    }
+    
+    else
+    {
+        circle.setFillColor(sf::Color::Black);
+    }
 
     circle.setRadius(radius);
     circle.setPosition(circlePosition);
